@@ -1,0 +1,11 @@
+{
+"companyName": "UAB Applava",
+"productName": "Football Blitz",
+"dataUrl": "FootballBlitz.data.unityweb",
+"asmCodeUrl": "FootballBlitz.asm.code.unityweb",
+"asmMemoryUrl": "FootballBlitz.asm.memory.unityweb",
+"asmFrameworkUrl": "FootballBlitz.asm.framework.unityweb",
+"TOTAL_MEMORY": 134217728,
+"splashScreenStyle": "Dark",
+"backgroundColor": "#222C36"
+}

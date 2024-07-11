@@ -1,0 +1,14 @@
+{
+"companyName": "CyberGoldfinch",
+"productName": "Panda Simulator",
+"dataUrl": "POKI_Panda Simulator.data.unityweb?v=1",
+"asmCodeUrl": "POKI_Panda Simulator.asm.code.unityweb?v=1",
+"asmMemoryUrl": "POKI_Panda Simulator.asm.memory.unityweb?v=1",
+"asmFrameworkUrl": "POKI_Panda Simulator.asm.framework.unityweb?v=1",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"backgroundUrl": "POKI_Panda Simulator.jpg",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#FFFFFF"
+}
