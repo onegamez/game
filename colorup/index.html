@@ -1,0 +1,600 @@
+<!doctype html>
+<html>
+
+<head>
+
+
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name='viewport'
+        content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover' />
+    <meta charset='utf-8'>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+            background-color: #f3f3f3;
+        }
+
+        body {
+            margin: 0;
+            max-height: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #f3f3f3;
+            font-family: Helvetica, arial, sans-serif;
+            position: relative;
+            width: 100%;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        #application-canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        #application-canvas.fill-mode-NONE {
+            margin: auto;
+        }
+
+        #application-canvas.fill-mode-KEEP_ASPECT {
+            width: 100%;
+            height: auto;
+            margin: 0;
+        }
+
+        #application-canvas.fill-mode-FILL_WINDOW {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        canvas:focus {
+            outline: none;
+        }
+    </style>
+    <title>Color Up</title>
+    <script src="poki-sdk.js"></script>
+    <script src="files/assets/157165176/1/boot.js"></script>
+    <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+    <script type="text/javascript" async=true>
+        (function () {
+            var host = window.location.hostname;
+            var element = document.createElement('script');
+            var firstScript = document.getElementsByTagName('script')[0];
+            var url = 'https://cmp.inmobi.com'
+                .concat('/choice/', 'PJfTqtNMz5vpf', '/', host, '/choice.js?tag_version=V3');
+            var uspTries = 0;
+            var uspTriesLimit = 3;
+            element.async = true;
+            element.type = 'text/javascript';
+            element.src = url;
+
+            firstScript.parentNode.insertBefore(element, firstScript);
+
+            function makeStub() {
+                var TCF_LOCATOR_NAME = '__tcfapiLocator';
+                var queue = [];
+                var win = window;
+                var cmpFrame;
+
+                function addFrame() {
+                    var doc = win.document;
+                    var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+                    if (!otherCMP) {
+                        if (doc.body) {
+                            var iframe = doc.createElement('iframe');
+
+                            iframe.style.cssText = 'display:none';
+                            iframe.name = TCF_LOCATOR_NAME;
+                            doc.body.appendChild(iframe);
+                        } else {
+                            setTimeout(addFrame, 5);
+                        }
+                    }
+                    return !otherCMP;
+                }
+
+                function tcfAPIHandler() {
+                    var gdprApplies;
+                    var args = arguments;
+
+                    if (!args.length) {
+                        return queue;
+                    } else if (args[0] === 'setGdprApplies') {
+                        if (
+                            args.length > 3 &&
+                            args[2] === 2 &&
+                            typeof args[3] === 'boolean'
+                        ) {
+                            gdprApplies = args[3];
+                            if (typeof args[2] === 'function') {
+                                args[2]('set', true);
+                            }
+                        }
+                    } else if (args[0] === 'ping') {
+                        var retr = {
+                            gdprApplies: gdprApplies,
+                            cmpLoaded: false,
+                            cmpStatus: 'stub'
+                        };
+
+                        if (typeof args[2] === 'function') {
+                            args[2](retr);
+                        }
+                    } else {
+                        if (args[0] === 'init' && typeof args[3] === 'object') {
+                            args[3] = Object.assign(args[3], { tag_version: 'V3' });
+                        }
+                        queue.push(args);
+                    }
+                }
+
+                function postMessageEventHandler(event) {
+                    var msgIsString = typeof event.data === 'string';
+                    var json = {};
+
+                    try {
+                        if (msgIsString) {
+                            json = JSON.parse(event.data);
+                        } else {
+                            json = event.data;
+                        }
+                    } catch (ignore) { }
+
+                    var payload = json.__tcfapiCall;
+
+                    if (payload) {
+                        window.__tcfapi(
+                            payload.command,
+                            payload.version,
+                            function (retValue, success) {
+                                var returnMsg = {
+                                    __tcfapiReturn: {
+                                        returnValue: retValue,
+                                        success: success,
+                                        callId: payload.callId
+                                    }
+                                };
+                                if (msgIsString) {
+                                    returnMsg = JSON.stringify(returnMsg);
+                                }
+                                if (event && event.source && event.source.postMessage) {
+                                    event.source.postMessage(returnMsg, '*');
+                                }
+                            },
+                            payload.parameter
+                        );
+                    }
+                }
+
+                while (win) {
+                    try {
+                        if (win.frames[TCF_LOCATOR_NAME]) {
+                            cmpFrame = win;
+                            break;
+                        }
+                    } catch (ignore) { }
+
+                    if (win === window.top) {
+                        break;
+                    }
+                    win = win.parent;
+                }
+                if (!cmpFrame) {
+                    addFrame();
+                    win.__tcfapi = tcfAPIHandler;
+                    win.addEventListener('message', postMessageEventHandler, false);
+                }
+            };
+
+            makeStub();
+
+            var uspStubFunction = function () {
+                var arg = arguments;
+                if (typeof window.__uspapi !== uspStubFunction) {
+                    setTimeout(function () {
+                        if (typeof window.__uspapi !== 'undefined') {
+                            window.__uspapi.apply(window.__uspapi, arg);
+                        }
+                    }, 500);
+                }
+            };
+
+            var checkIfUspIsReady = function () {
+                uspTries++;
+                if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+                    console.warn('USP is not accessible');
+                } else {
+                    clearInterval(uspInterval);
+                }
+            };
+
+            if (typeof window.__uspapi === 'undefined') {
+                window.__uspapi = uspStubFunction;
+                var uspInterval = setInterval(checkIfUspIsReady, 6000);
+            }
+        })();
+    </script>
+    <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+</head>
+
+<body>
+    <script>
+        const loadModules = function (modules, urlPrefix, doneCallback) { // eslint-disable-line no-unused-vars
+
+            if (typeof modules === "undefined" || modules.length === 0) {
+                // caller may depend on callback behaviour being async
+                setTimeout(doneCallback);
+            } else {
+                let remaining = modules.length;
+                const moduleLoaded = () => {
+                    if (--remaining === 0) {
+                        doneCallback();
+                    }
+                };
+
+                modules.forEach(function (m) {
+                    pc.WasmModule.setConfig(m.moduleName, {
+                        glueUrl: urlPrefix + m.glueUrl,
+                        wasmUrl: urlPrefix + m.wasmUrl,
+                        fallbackUrl: urlPrefix + m.fallbackUrl
+                    });
+
+                    if (!m.hasOwnProperty('preload') || m.preload) {
+                        if (m.moduleName === 'BASIS') {
+                            // preload basis transcoder
+                            pc.basisInitialize();
+                            moduleLoaded();
+                        } else if (m.moduleName === 'DracoDecoderModule') {
+                            // preload draco decoder
+                            if (pc.dracoInitialize) {
+                                // 1.63 onwards
+                                pc.dracoInitialize();
+                                moduleLoaded();
+                            } else {
+                                // 1.62 and earlier
+                                pc.WasmModule.getInstance(m.moduleName, () => { moduleLoaded(); });
+                            }
+                        } else {
+                            // load remaining modules in global scope
+                            pc.WasmModule.getInstance(m.moduleName, () => { moduleLoaded(); });
+                        }
+                    } else {
+                        moduleLoaded();
+                    }
+                });
+            }
+        };
+
+        const start = () => {
+            // Shared Lib
+            var CANVAS_ID = 'application-canvas';
+
+            // Needed as we will have edge cases for particular versions of iOS
+            // returns null if not iOS
+            var getIosVersion = function () {
+                if (/iP(hone|od|ad)/.test(navigator.platform)) {
+                    var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+                    var version = [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+                    return version;
+                }
+
+                return null;
+            };
+
+            var lastWindowHeight = window.innerHeight;
+            var lastWindowWidth = window.innerWidth;
+            var windowSizeChangeIntervalHandler = null;
+
+            var pcBootstrap = {
+                reflowHandler: null,
+                iosVersion: getIosVersion(),
+
+                createCanvas: function () {
+                    var canvas = document.createElement('canvas');
+                    canvas.setAttribute('id', CANVAS_ID);
+                    canvas.setAttribute('tabindex', 0);
+
+                    // Disable I-bar cursor on click+drag
+                    canvas.onselectstart = function () { return false; };
+
+                    // Disable long-touch select on iOS devices
+                    canvas.style['-webkit-user-select'] = 'none';
+
+                    document.body.appendChild(canvas);
+
+                    return canvas;
+                },
+
+
+                resizeCanvas: function (app, canvas) {
+                    canvas.style.width = '';
+                    canvas.style.height = '';
+                    app.resizeCanvas(canvas.width, canvas.height);
+
+                    var fillMode = app._fillMode;
+
+                    if (fillMode == pc.FILLMODE_NONE || fillMode == pc.FILLMODE_KEEP_ASPECT) {
+                        if ((fillMode == pc.FILLMODE_NONE && canvas.clientHeight < window.innerHeight) || (canvas.clientWidth / canvas.clientHeight >= window.innerWidth / window.innerHeight)) {
+                            canvas.style.marginTop = Math.floor((window.innerHeight - canvas.clientHeight) / 2) + 'px';
+                        } else {
+                            canvas.style.marginTop = '';
+                        }
+                    }
+
+                    lastWindowHeight = window.innerHeight;
+                    lastWindowWidth = window.innerWidth;
+
+                    // Work around when in landscape to work on iOS 12 otherwise
+                    // the content is under the URL bar at the top
+                    if (this.iosVersion && this.iosVersion[0] <= 12) {
+                        window.scrollTo(0, 0);
+                    }
+                },
+
+                reflow: function (app, canvas) {
+                    this.resizeCanvas(app, canvas);
+
+                    // Poll for size changes as the window inner height can change after the resize event for iOS
+                    // Have one tab only, and rotate from portrait -> landscape -> portrait
+                    if (windowSizeChangeIntervalHandler === null) {
+                        windowSizeChangeIntervalHandler = setInterval(function () {
+                            if (lastWindowHeight !== window.innerHeight || lastWindowWidth !== window.innerWidth) {
+                                this.resizeCanvas(app, canvas);
+                            }
+                        }.bind(this), 100);
+
+                        // Don't want to do this all the time so stop polling after some short time
+                        setTimeout(function () {
+                            if (!!windowSizeChangeIntervalHandler) {
+                                clearInterval(windowSizeChangeIntervalHandler);
+                                windowSizeChangeIntervalHandler = null;
+                            }
+                        }, 2000);
+                    }
+                }
+            };
+
+            // Expose the reflow to users so that they can override the existing
+            // reflow logic if need be
+
+            var canvas, devices, app;
+
+            var createInputDevices = function (canvas) {
+                var devices = {
+                    elementInput: new pc.ElementInput(canvas, {
+                        useMouse: INPUT_SETTINGS.useMouse,
+                        useTouch: INPUT_SETTINGS.useTouch
+                    }),
+                    keyboard: INPUT_SETTINGS.useKeyboard ? new pc.Keyboard(window) : null,
+                    mouse: INPUT_SETTINGS.useMouse ? new pc.Mouse(canvas) : null,
+                    gamepads: INPUT_SETTINGS.useGamepads ? new pc.GamePads() : null,
+                    touch: INPUT_SETTINGS.useTouch && pc.platform.touch ? new pc.TouchDevice(canvas) : null
+                };
+
+                return devices;
+            };
+
+            var configureCss = function (fillMode, width, height) {
+                // Configure resolution and resize event
+                if (canvas.classList) {
+                    canvas.classList.add('fill-mode-' + fillMode);
+                }
+
+                // css media query for aspect ratio changes
+                var css = "@media screen and (min-aspect-ratio: " + width + "/" + height + ") {";
+                css += "    #application-canvas.fill-mode-KEEP_ASPECT {";
+                css += "        width: auto;";
+                css += "        height: 100%;";
+                css += "        margin: 0 auto;";
+                css += "    }";
+                css += "}";
+
+                // append css to style
+                if (document.head.querySelector) {
+                    document.head.querySelector('style').innerHTML += css;
+                }
+            };
+
+            var displayError = function (html) {
+                var div = document.createElement('div');
+
+                div.innerHTML = [
+                    '<table style="background-color: #8CE; width: 100%; height: 100%;">',
+                    '  <tr>',
+                    '      <td align="center">',
+                    '          <div style="display: table-cell; vertical-align: middle;">',
+                    '              <div style="">' + html + '</div>',
+                    '          </div>',
+                    '      </td>',
+                    '  </tr>',
+                    '</table>'
+                ].join('\n');
+
+                document.body.appendChild(div);
+            };
+
+            canvas = pcBootstrap.createCanvas();
+            devices = createInputDevices(canvas);
+
+            // #5856 - turn off antialiasing on Windows Firefox
+            const ua = (typeof navigator !== 'undefined') ? navigator.userAgent : '';
+            const environment = (typeof window !== 'undefined') ? 'browser' : 'node';
+
+            const platformName =
+                (/android/i.test(ua) ? 'android' :
+                    (/ip([ao]d|hone)/i.test(ua) ? 'ios' :
+                        (/windows/i.test(ua) ? 'windows' :
+                            (/mac os/i.test(ua) ? 'osx' :
+                                (/linux/i.test(ua) ? 'linux' :
+                                    (/cros/i.test(ua) ? 'cros' : null))))));
+
+            const browserName =
+                (environment !== 'browser') ? null :
+                    (/(Chrome\/|Chromium\/|Edg.*\/)/.test(ua) ? 'chrome' :  // chrome, chromium, edge
+                        (/Safari\//.test(ua) ? 'safari' :                   // safari, ios chrome/firefox
+                            (/Firefox\//.test(ua) ? 'firefox' :
+                                'other')));
+
+            if (browserName === 'firefox' && platformName === 'windows') {
+                const ua = (typeof navigator !== 'undefined') ? navigator.userAgent : '';
+                const match = ua.match(/Firefox\/(\d+(\.\d+)*)/);
+                const firefoxVersion = match ? match[1] : null;
+                if (firefoxVersion) {
+                    const version = parseFloat(firefoxVersion);
+                    if (version >= 120 || version === 115) {
+                        window.CONTEXT_OPTIONS.antialias = false;
+                    }
+                }
+            }
+
+            try {
+                app = new pc.Application(canvas, {
+                    elementInput: devices.elementInput,
+                    keyboard: devices.keyboard,
+                    mouse: devices.mouse,
+                    gamepads: devices.gamepads,
+                    touch: devices.touch,
+                    graphicsDeviceOptions: window.CONTEXT_OPTIONS,
+                    assetPrefix: window.ASSET_PREFIX || "",
+                    scriptPrefix: window.SCRIPT_PREFIX || "",
+                    scriptsOrder: window.SCRIPTS || []
+                });
+            } catch (e) {
+                if (e instanceof pc.UnsupportedBrowserError) {
+                    displayError('This page requires a browser that supports WebGL.<br/>' +
+                        '<a href="http://get.webgl.org">Click here to find out more.</a>');
+                } else if (e instanceof pc.ContextCreationError) {
+                    displayError("It doesn't appear your computer can support WebGL.<br/>" +
+                        '<a href="http://get.webgl.org/troubleshooting/">Click here for more information.</a>');
+                } else {
+                    displayError('Could not initialize application. Error: ' + e);
+                }
+
+                return;
+            }
+
+            var appConfigure = function (app, url, callback) {
+                pc.http.get(url, (err, response) => {
+                    if (err) {
+                        callback(err);
+                        return;
+                    }
+
+                    const props = response.application_properties;
+                    const scenes = response.scenes;
+                    const assets = response.assets;
+
+                    // --- add version hash in all script files
+                    for (let id in assets) {
+
+                        const asset = assets[id];
+
+                        if (asset.type === 'script') {
+                            asset.file.url += `?v=${GAME_VERSION}`;
+                        }
+                    }
+
+                    app._parseApplicationProperties(props, (err) => {
+                        app._parseScenes(scenes);
+                        app._parseAssets(assets);
+                        if (!err) {
+                            callback(null);
+                        } else {
+                            callback(err);
+                        }
+                    });
+                });
+            };
+
+            var configure = function () {
+                appConfigure(app, CONFIG_FILENAME, function (err) {
+                    if (err) {
+                        console.error(err);
+                    }
+
+                    configureCss(app._fillMode, app._width, app._height);
+
+                    const ltcMat1 = [];
+                    const ltcMat2 = [];
+
+                    if (ltcMat1.length && ltcMat2.length && app.setAreaLightLuts.length === 2) {
+                        app.setAreaLightLuts(ltcMat1, ltcMat2);
+                    }
+
+                    // do the first reflow after a timeout because of
+                    // iOS showing a squished iframe sometimes
+                    setTimeout(function () {
+                        pcBootstrap.reflow(app, canvas);
+                        pcBootstrap.reflowHandler = function () { pcBootstrap.reflow(app, canvas); };
+
+                        window.addEventListener('resize', pcBootstrap.reflowHandler, false);
+                        window.addEventListener('orientationchange', pcBootstrap.reflowHandler, false);
+
+                        app.preload(function (err) {
+                            if (err) {
+                                console.error(err);
+                            }
+
+                            app.scenes.loadScene(SCENE_PATH, function (err, scene) {
+                                if (err) {
+                                    console.error(err);
+                                }
+
+                                app.start();
+                            });
+                        });
+                    });
+                });
+            };
+
+            if (PRELOAD_MODULES.length > 0) {
+                loadModules(PRELOAD_MODULES, ASSET_PREFIX, configure);
+            } else {
+                configure();
+            }
+        };
+
+        const loadScripts = async () => {
+            const loadJS = function (url, location) {
+                return new Promise(resolve => {
+                    const scriptTag = document.createElement('script');
+                    scriptTag.src = url;
+                    scriptTag.onload = resolve;
+
+                    location.appendChild(scriptTag);
+                });
+            };
+
+            await loadJS(`playcanvas-stable.min.js?v=${GAME_VERSION}`, document.head);
+            await loadJS(`settings__.js?v=${GAME_VERSION}`, document.head);
+
+            // --- add version hash in all settings urls
+            window.SCENE_PATH += `?v=${GAME_VERSION}`;
+            window.CONFIG_FILENAME += `?v=${GAME_VERSION}`;
+
+            window.PRELOAD_MODULES.forEach(module => {
+                for (let prop in module) {
+                    if (prop.indexOf('Url') > -1) module[prop] += `?v=${GAME_VERSION}`;
+                }
+            });
+
+            loadModules();
+            start();
+            await loadJS(`loading__.js?v=${GAME_VERSION}`, document.body);
+        };
+
+        loadScripts();
+    </script>
+
+
+</body>
+
+</html>
