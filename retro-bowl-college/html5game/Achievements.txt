@@ -26,8 +26,8 @@ ACH_TRADEOUT	Trade a player out	0	fr
 ACH_CUT	Cut a player	0	fr,co
 ACH_WIN_DIVISION	Win a division	0	fr
 ACH_WIN_PLAYOFF	Win a play-off game	0	fr
-ACH_WIN_AFC	Win the AFC title	0	fr
-ACH_WIN_NFC	Win the NFC title	0	fr
+ACH_WIN_AFC	Win the CONF A title	0	fr
+ACH_WIN_NFC	Win the CONF N title	0	fr
 ACH_WIN_RETROBOWL1	Win the Retro Bowl	0	fr
 ACH_WIN_RETROBOWL3	Win 3 Retro Bowl titles	0	fr
 ACH_WIN_RETROBOWL5	Win 5 Retro Bowl titles	0	fr
