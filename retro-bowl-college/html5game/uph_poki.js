@@ -33,25 +33,19 @@ function poki_happy_time(magnitude) {
 ///~
 function poki_commercial_break_raw(fn) {
     if (PokiSDK) {
-        PokiSDK.commercialBreak().then(function() {
-            fn(true);
-        });
-    } else setTimeout(function() {
-        fn(false);
-    }, 0);
+        PokiSDK.commercialBreak().then(function() { fn(true); });
+    } else setTimeout(function() { fn(false); }, 0);
 }
 
 ///~
 function poki_rewarded_break_raw(fn) {
     if (PokiSDK) {
         PokiSDK.rewardedBreak().then(fn);
-    } else setTimeout(function() {
-        fn(false);
-    }, 0);
+    } else setTimeout(function() { fn(false); }, 0);
 }
 
 /// https://yal.cc/gamemaker-html5-loading-bar-extended/
-var inst = {};
+var inst = { };
 ///~
 function poki_loadbar(ctx, width, height, total, current, image) {
     if (window.PokiSDK) { // if you have your own loadbar, just copy this block in there
@@ -59,15 +53,13 @@ function poki_loadbar(ctx, width, height, total, current, image) {
             window.PokiSDK_isLoading = 1;
             PokiSDK.gameLoadingStart();
         }
-        PokiSDK.gameLoadingProgress({
-            percentageDone: current / total
-        });
+        PokiSDK.gameLoadingProgress({ percentageDone: current/total });
         if (current >= total && window.PokiSDK_loadState != 2) {
             window.PokiSDK_loadState = 2;
             PokiSDK.gameLoadingFinished();
         }
     }
-
+    
     function getv(s) {
         if (window.gml_Script_gmcallback_poki_loadbar) {
             return window.gml_Script_gmcallback_poki_loadbar(inst, null,
@@ -75,17 +67,14 @@ function poki_loadbar(ctx, width, height, total, current, image) {
                 width, height, image ? image.width : 0, image ? image.height : 0)
         } else return undefined;
     }
-
     function getf(s, d) {
         var r = getv(s);
         return typeof(r) == "number" ? r : d;
     }
-
     function getw(s, d) {
         var r = getv(s);
         return r && r.constructor == Array ? r : d;
     }
-
     function getc(s, d) {
         var r = getv(s);
         if (typeof(r) == "number") {
@@ -139,14 +128,9 @@ function poki_loadbar(ctx, width, height, total, current, image) {
 
 ///~
 function poki_get_team_raw() {
-    return PokiSDK.getURLParam('team');
+	return PokiSDK.getURLParam('team');
 }
 
 function poki_set_team_raw(team) {
-    return window.parent.postMessage({
-        type: 'RetroBowl_teamSwitch',
-        content: {
-            team
-        }
-    }, '*');
+	return window.parent.postMessage({type: 'RetroBowl_teamSwitch', content: { team }}, '*');
 }
